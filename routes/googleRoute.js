@@ -1,15 +1,15 @@
 const express = require("express");
 const passport = require("passport");
-const userController = require("../controllers/facebookCtrl");
+const userController = require("../controllers/googleCtrl");
 
 const userRouter = express.Router();
 
-userRouter.get("/auth/facebook", passport.authenticate("facebook"));
+userRouter.get("/auth/google", passport.authenticate("google", {scope:['profile']}));
 
 userRouter.get(
-  "/auth/facebook/callback",
-  passport.authenticate("facebook", {
-    successRedirect: "/",
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/callback",
     failureRedirect: "/fail",
   })
 );

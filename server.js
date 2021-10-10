@@ -28,16 +28,18 @@ app.use(
   })
 );
 
-
+app.use('/', require('./callback'))
 
 //All routes
 app.use("/auth/facebook", require("./routes/facebookRoute"));
+app.use("/auth/google", require("./routes/googleRoute"));
 app.use("/user", require("./routes/userRoute"));
 app.use("/api", require("./routes/uploadRoute"));
 app.use("/api/auth", require("./routes/auth1"));
 
 //All routes
 app.use("/api/auth", require("./routes/registerRoute"));
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
